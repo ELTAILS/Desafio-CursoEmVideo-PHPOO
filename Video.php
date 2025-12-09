@@ -1,18 +1,15 @@
 <?php
-require_once "AcoesVideo.php";
+require_once "interface/AcoesVideo.php";
 class Video implements AcoesVideo{
     private string $titulo;
-    private int $avaliacao;
-    private int $views;
-    private int $curtidas;
-    private bool $reproduzindo;
+    private int $avaliacao = 1;
+    private int $views = 1;
+    private int $curtidas = 0;
+    private bool $reproduzindo = false;
+
 
     public function __construct($titulo){
         $this->setTitulo($titulo);
-        $this->setAvaliacao(1);
-        $this->setViews(0);
-        $this->setCurtidas(0);
-        $this->setReproduzindo(false);
     }    
 
     //GET E SET
@@ -37,10 +34,6 @@ class Video implements AcoesVideo{
     }
 
     public function setAvaliacao(int $avaliacao){
-        if($avaliacao < 1){
-            throw new InvalidArgumentException("Total de avalições está abaixo do esperado!");
-        }
-
         $this->avaliacao = $avaliacao;
     }
 
